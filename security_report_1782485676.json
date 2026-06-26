@@ -1,0 +1,31 @@
+{
+    "scan_timestamp": "2026-06-26T20:24:36.974465",
+    "target_scanned": "test.py",
+    "total_threats_found": 4,
+    "threat_log": [
+        {
+            "Line": 1,
+            "Risk_Level": "MEDIUM",
+            "Vulnerability": "Insecure standard library imported: \"pickle\"",
+            "AI_Remediation": "\"pickle\" is unsafe. For serialization, swap to the \"json\" module."
+        },
+        {
+            "Line": 5,
+            "Risk_Level": "CRITICAL",
+            "Vulnerability": "Hardcoded Secret assigned to \"google_cloud_api_key\"",
+            "AI_Remediation": "Do not store \"google_cloud_api_key\" in plaintext. Use: os.getenv(\"GOOGLE_CLOUD_API_KEY\")"
+        },
+        {
+            "Line": 9,
+            "Risk_Level": "CRITICAL (Active RCE)",
+            "Vulnerability": "User-controlled data passed directly into eval()",
+            "AI_Remediation": "NEVER pass raw user input to eval(). Use ast.literal_eval() for safe string parsing."
+        },
+        {
+            "Line": 12,
+            "Risk_Level": "HIGH",
+            "Vulnerability": "Dynamic execution via eval() detected",
+            "AI_Remediation": "Refactor code to avoid dynamic execution entirely."
+        }
+    ]
+}
